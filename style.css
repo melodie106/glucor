@@ -64,7 +64,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block; /* Assure que l'élément est traité comme un bloc pour centrer le texte */
-    width: 10%; /* Assure que le titre occupe toute la largeur disponible */
+    width: 100%; /* Assure que le titre occupe toute la largeur disponible */
 }
 
 .page-title-scanner { 
@@ -73,7 +73,6 @@ body {
     text-align: center; /* Centre le texte horizontalement */
     margin-left: auto;
     margin-right: auto;
-    transform: translateX(-8%); /* Centre parfaitement le titre */
     display: block; /* Assure que l'élément est traité comme un bloc pour centrer le texte */
     width: 100%; /* Assure que le titre occupe toute la largeur disponible */
 }
@@ -92,32 +91,25 @@ body {
     padding: 10px; /* Espace intérieur pour le contenu */
 }
 
-.icon-container:hover .st0:hover .close:hover {
+.arrow {
+    margin-left: 2px;
+    }
+
+
+.close {
+    margin-right: 2px;
+    }
+
+    .close:active, .close:hover   {
+        fill: rgba(68, 100, 60, 1);
+    }
+
+.arrow:active, .arrow:hover, .st0:hover {
     fill: rgba(68, 100, 60, 1);
+    stroke: 5px;
 }
 
 
-a:focus {
-    outline: none; /* Enlève la bordure de focus par défaut */
-}
 
-
-/* BUTTONS */
-.btn-exit {
-    position: absolute;
-    top: 20px; /* Distance from the top */
-    right: 5px; /* Distance from the right */
-    font-size: 0.8em; /* Smaller font size */
-    padding: 5px 10px; /* Smaller padding */
-}
-
-
-.btn-return {
-    position: absolute;
-    top: 20px; /* Distance from the top */
-    font-size: 0.8em; /* Smaller font size */
-    padding: 5px 10px; /* Smaller padding */
-    right: 65px; /* Distance from the right */
-}
 
 
