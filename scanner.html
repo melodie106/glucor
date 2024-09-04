@@ -12,7 +12,7 @@
             <div class="go-back">
                 <a href="homepage.html" >
                     <div class="icon-container">
-                        <svg width="25px" height="20px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="arrow" width="25px" height="20px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <g id="Layer_1"/>
                             <g id="Layer_2">
                                 <g class="scaled">
@@ -31,7 +31,15 @@
                     </div>
                 </a>
                     <div class="page-title-scanner">바코드 스케너</div>
+                    <div class="icon-container"> 
+                        <svg class="close" width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="10" stroke="none" stroke-width="1.5"/>
+                          <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="none" stroke-width="1.5" stroke-linecap="round"/>
+                          </svg>  
+                    </div>
             </div>
+            
+
                 <div class="sub-title" > <b>제품의 영양 라벨</b>을 <br> 스캔해보세요.</div>
                 <div class="sub-sub-title"> 제품의 영양 라벨을 스캔하여 설탕의 <br> 양을 알 수 있습니다.</div>
                     <div id="scannerPage" class="scanner-page">
@@ -87,7 +95,7 @@
     border: 1px solid rgba(250, 250, 250, 1); /* Bordure subtile */
     border-radius: 15px; /* Coins arrondis pour un effet de carte */
     backdrop-filter: blur(10px); /* Applique un flou à l'arrière-plan */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Ajoute une ombre portée pour un effet de surélévation */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Ajoute une ombre portée pour un effet de surélévation */
     padding: 8px; /* Espace intérieur pour le contenu */
 }
 
