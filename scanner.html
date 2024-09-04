@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scanner Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="screen">
+            <div class="go-back">
+                <a href="homepage.html" >
+                    <div class="icon-container">
+                        <svg width="25px" height="20px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <g id="Layer_1"/>
+                            <g id="Layer_2">
+                                <g class="scaled">
+                                    <path class="st0" d="M217,129.88c-6.25-6.25-16.38-6.25-22.63,0L79.61,244.64c-0.39,0.39-0.76,0.8-1.11,1.23
+                                        c-0.11,0.13-0.2,0.27-0.31,0.41c-0.21,0.28-0.42,0.55-0.62,0.84c-0.14,0.21-0.26,0.43-0.39,0.64c-0.14,0.23-0.28,0.46-0.41,0.7
+                                        c-0.13,0.24-0.24,0.48-0.35,0.73c-0.11,0.23-0.22,0.45-0.32,0.68c-0.11,0.26-0.19,0.52-0.28,0.78c-0.08,0.23-0.17,0.46-0.24,0.69
+                                        c-0.09,0.29-0.15,0.58-0.22,0.86c-0.05,0.22-0.11,0.43-0.16,0.65c-0.08,0.38-0.13,0.76-0.17,1.14c-0.02,0.14-0.04,0.27-0.06,0.41
+                                        c-0.11,1.07-0.11,2.15,0,3.22c0.01,0.06,0.02,0.12,0.03,0.18c0.05,0.46,0.12,0.92,0.21,1.37c0.03,0.13,0.07,0.26,0.1,0.39
+                                        c0.09,0.38,0.18,0.76,0.29,1.13c0.04,0.13,0.09,0.26,0.14,0.4c0.12,0.36,0.25,0.73,0.4,1.09c0.05,0.11,0.1,0.21,0.15,0.32
+                                        c0.17,0.37,0.34,0.74,0.53,1.1c0.04,0.07,0.09,0.14,0.13,0.21c0.21,0.38,0.44,0.76,0.68,1.13c0.02,0.03,0.04,0.06,0.06,0.09
+                                        c0.55,0.81,1.18,1.58,1.89,2.29l114.81,114.81c3.12,3.12,7.22,4.69,11.31,4.69s8.19-1.56,11.31-4.69c6.25-6.25,6.25-16.38,0-22.63
+                                        l-87.5-87.5h291.62c8.84,0,16-7.16,16-16s-7.16-16-16-16H129.51L217,152.5C223.25,146.26,223.25,136.13,217,129.88z"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+                    <div class="page-title">바코드 스케너</div>
+            </div>
+                <div class="sub-title" > <b>제품의 영양 라벨</b>을 <br> 스캔해보세요.</div>
+                <div class="sub-sub-title"> 제품의 영양 라벨을 스캔하여 설탕의 <br> 양을 알 수 있습니다.</div>
+                    <div id="scannerPage" class="scanner-page">
+                            <div id="reader"></div>
+                            <div id="scanResult">
+                                <p id="scanResultText" style="display:none;"></p>
+                                <a id="scanResultUrl" href="#" target="_blank"></a>
+                            </div>
+                    </div>
+                <div class="camera-info" >
+                    *facing front: 전면 카메라는 셀카를 찍을 때 사용. <br>
+                    *facing back:  후면 카메라는 물건을 촬영할 때 사용. 
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+
+.sub-title {
+    font: 300 24px NanumGothic, sans-serif;
+    letter-spacing: 0.5px;
+    color: #363A3C; /* Couleur du texte */
+    word-break: keep-all;
+    text-align: left;
+    letter-spacing: -0.5%;
+    line-height: 1.2;
+    margin-top: 24px;
+    margin-bottom : 12px;
+    margin-right : 16px;
+    margin-left : 16px;
+}
+
+
+.sub-sub-title {
+    font: 400 14px NanumGothic, sans-serif;
+    letter-spacing: 0.5px;
+    color: #888888; /* Couleur du texte */
+    word-break: keep-all;
+    text-align: left;
+    letter-spacing: -0.5%;
+    line-height: 1.4;
+    margin-bottom: 34px;
+    margin-right : 16px;
+    margin-left : 16px;
+
+}
+
+.scanner-page {
+    margin: 16px;
+    font: 550 16px/1.4em NanumGothic, sans-serif;
+    background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond semi-transparente pour voir le flou en arrière-plan */
+    border: 1px solid rgba(250, 250, 250, 1); /* Bordure subtile */
+    border-radius: 15px; /* Coins arrondis pour un effet de carte */
+    backdrop-filter: blur(10px); /* Applique un flou à l'arrière-plan */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Ajoute une ombre portée pour un effet de surélévation */
+    padding: 8px; /* Espace intérieur pour le contenu */
+}
+
+.camera-info {
+    margin: 16px;
+    color: #878D91;
+    margin-top: 10px;
+    font: 300 13px/1.2em NanumGothic, sans-serif;
+}
+
+button {
+    background-color: rgba(108, 159, 97, 1);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin: 1em;
+    font: 500 16px/1 NanumGothic, sans-serif;
+    letter-spacing: 1.25px;
+    display: inline-block;
+
+}
+
+.button:hover {
+    background-color: rgba(68, 100, 60, 1);
+}
+
+
+
+</style>
+    <script src="html5-qrcode.min.js"></script>
+    <script>
+    
+    let productsData;
+
+        // Load the JSON data
+        fetch('products.json')
+            .then(response => response.json())
+            .then(data => productsData = data)
+            .catch(error => console.error('Error loading JSON:', error));
+        
+        function onScanSuccess(decodedText, decodedResult) {
+            console.log(`Scan result: ${decodedText}`, decodedResult);
+        
+            let product = productsData[decodedText];
+            if (product && product.식품명) {
+                sessionStorage.setItem('scannedProduct', JSON.stringify(product));
+                window.location.href = 'analysis.html';
+            } else if (isValidUrl(decodedText)) {
+                window.location.href = decodedText;
+            } else {
+                window.location.href = 'error.html';
+            }
+        
+            // Clear the QR code scanner and show the refresh button
+            html5QrcodeScanner.clear();
+            document.getElementById("refreshButton").style.display = "block";
+        }
+        
+        // Function to refresh the QR code scanner
+        function refreshScanner() {
+            document.getElementById("scanResultText").innerHTML = '';
+            document.getElementById("scanResultUrl").innerHTML = '';
+            document.getElementById("scanResultUrl").href = '';
+        
+            document.getElementById("refreshButton").style.display = "none";
+        
+            // Re-initialize the scanner
+            initScanner();
+        }
+        
+        // Initialize the QR code scanner
+        let html5QrcodeScanner;
+        
+        function initScanner() {
+            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess);
+        }
+        
+        // Render the QR code scanner with the defined success callback
+        window.onload = function() {
+            initScanner();
+        }
+        
+        // Function to navigate to the scanner page
+        function navigateToScanner() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('scannerPage').style.display = 'block';
+        
+            document.getElementById("refreshButton").style.display = "none";
+            initScanner();
+        }
+        
+        // Utility function to validate URLs
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+        
+            </script>
+</body>
+</html>

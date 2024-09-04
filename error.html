@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Not Found</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="phone-frame">
+    <div class="screen">
+        <img src="error_illu.jpg" alt="No found" width="300" height="300" ></img>
+            <div class="sub-title"> <b>제품</b>을 찾을 수 없습니다.</div>
+        <div class="error-page">
+            <div class="body-text"> 바코드 n°<span id="barcode"></span>가 등록되어 있지 않습니다.</div>        
+            <a href="scanner.html" class="retry-button">다시 스켄해보기</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .retry-button {
+    background-color: rgba(108, 159, 97, 1);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 32px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    text-align: center;
+    border-radius: 15px;
+    font: 500 16px NanumGothic, sans-serif;
+    letter-spacing: 1.25px;
+    
+}
+
+.retry-button:hover {
+    background-color: rgba(68, 100, 60, 1);
+}
+
+.sub-title {
+    font: 350 24px/1 NanumGothic, sans-serif;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: #363A3C;
+    text-align: center; /* Centrer le texte horizontalement */
+    display: flex; /* Utiliser flexbox pour centrer le contenu */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    margin-top: 32px;
+    margin-bottom: 16px;
+    margin-left : 16px;
+    margin-right: 16px;
+
+}
+
+.body-text {
+    font: 400 15px/1 NanumGothic, sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 120%;
+    word-break: keep-all;
+    color: #888888;
+    text-align: center; /* Centrer le texte horizontalement */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    margin-bottom: 110px;
+    margin-left : 16px;
+    margin-right: 16px;
+
+}
+
+img {
+    position: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 104px;
+    margin-bottom: 74px;
+
+}
+
+
+</style>
+
+<script>
+    // Récupérer le code-barres de l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const barcode = urlParams.get('code');
+    
+    // Afficher le code-barres sur la page
+    document.getElementById('barcode').textContent = barcode;
+</script>
+</body>
+</html>
