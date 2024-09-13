@@ -10,7 +10,7 @@
     <div class="phone-frame">
         <div class="screen">
             <div class="go-back">
-                <a href="glucor.html" >
+                <a href="homepage.html" >
                     <div class="icon-container">
                         <svg class="arrow" width="25px" height="20px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <g id="Layer_1"/>
@@ -41,7 +41,7 @@
             
 
                 <div class="sub-title" > <b>제품의 영양 라벨</b>을 <br> 스캔해보세요.</div>
-                <div class="sub-sub-title"> 제품의 영양 라벨을 스캔하여 설탕의 <br> 양을 알 수 있습니다.</div>
+                <div class="sub-sub-title"> 제품의 영양 라벨을 스캔하여 영양을 <br> 알 수 있습니다.</div>
                     <div id="scannerPage" class="scanner-page">
                             <div id="reader"></div>
                             <div id="scanResult">
@@ -82,7 +82,7 @@
     text-align: left;
     letter-spacing: -0.5%;
     line-height: 1.4;
-    margin-bottom: 34px;
+    margin-bottom: 26px;
     margin-right : 16px;
     margin-left : 16px;
 
@@ -131,29 +131,31 @@ button {
     <script>
     
     let productsData;
+    let html5QrcodeScanner;
 
         // Load the JSON data
         fetch('products.json')
             .then(response => response.json())
             .then(data => productsData = data)
             .catch(error => console.error('Error loading JSON:', error));
+      
+    function initScanner() {
+            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 60, qrbox : 250 }); //originellement fps : 15 
+            html5QrcodeScanner.render(onScanSuccess);
+        }
         
-        function onScanSuccess(decodedText, decodedResult) {
-            console.log(`Scan result: ${decodedText}`, decodedResult);
-        
-            let product = productsData[decodedText];
-            if (product && product.식품명) {
-                sessionStorage.setItem('scannedProduct', JSON.stringify(product));
-                window.location.href = 'analysis.html';
-            } else if (isValidUrl(decodedText)) {
-                window.location.href = decodedText;
-            } else {
-                window.location.href = 'error.html';
-            }
-        
-            // Clear the QR code scanner and show the refresh button
-            html5QrcodeScanner.clear();
-            document.getElementById("refreshButton").style.display = "block";
+    function onScanSuccess(decodedText, decodedResult) {
+    console.log(`Scan result: ${decodedText}`, decodedResult);
+
+    let product = productsData[decodedText];
+    if (product && product.식품명) {
+        sessionStorage.setItem('scannedProduct', JSON.stringify(product));
+        window.location.href = 'analysis.html';
+    } else if (isValidUrl(decodedText)) {
+        window.location.href = decodedText;
+    } else {
+        window.location.href = `error.html?code=${decodedText}`; // Inclure le numéro du code-barres dans l'URL
+    } 
         }
         
         // Function to refresh the QR code scanner
@@ -166,14 +168,6 @@ button {
         
             // Re-initialize the scanner
             initScanner();
-        }
-        
-        // Initialize the QR code scanner
-        let html5QrcodeScanner;
-        
-        function initScanner() {
-            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
-            html5QrcodeScanner.render(onScanSuccess);
         }
         
         // Render the QR code scanner with the defined success callback
