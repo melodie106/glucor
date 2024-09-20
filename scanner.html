@@ -140,7 +140,7 @@ button {
             .catch(error => console.error('Error loading JSON:', error));
       
     function initScanner() {
-            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 30, qrbox : 250 }); //originellement fps : 15 
+            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 20, qrbox : 250 }); //originellement fps : 15 
             html5QrcodeScanner.render(onScanSuccess);
         }
         
