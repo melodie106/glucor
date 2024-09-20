@@ -134,7 +134,7 @@ button {
     let html5QrcodeScanner;
 
         // Load the JSON data
-        fetch('database/products.json')
+        fetch('products.json')
             .then(response => response.json())
             .then(data => productsData = data)
             .catch(error => console.error('Error loading JSON:', error));
