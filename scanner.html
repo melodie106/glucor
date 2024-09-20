@@ -134,13 +134,13 @@ button {
     let html5QrcodeScanner;
 
         // Load the JSON data
-        fetch('products.json')
+        fetch('database/products.json')
             .then(response => response.json())
             .then(data => productsData = data)
             .catch(error => console.error('Error loading JSON:', error));
       
     function initScanner() {
-            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 60, qrbox : 250 }); //originellement fps : 15 
+            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 30, qrbox : 250 }); //originellement fps : 15 
             html5QrcodeScanner.render(onScanSuccess);
         }
         
